@@ -3,7 +3,7 @@ package model;
 public class Verbruik {
     //attributen
     private final static double BASIS_KOSTEN = 9.95;
-    private final int VERBRUIK_ABBONEMENT = 3000;
+    private final int VERBRUIK_ABONNEMENT = 3000;
     private final double MEERPRIJS_MB = 0.025;
     private String maand;
     private int hoeveelheidMb;
@@ -34,18 +34,16 @@ public class Verbruik {
 
     //methoden
     public void berekenKosten() {
-        if (hoeveelheidMb <= VERBRUIK_ABBONEMENT) {
+        if (hoeveelheidMb <= VERBRUIK_ABONNEMENT) {
             kosten = BASIS_KOSTEN;
         } else {
-            int verbruikBuitenBundel = hoeveelheidMb - VERBRUIK_ABBONEMENT;
+            int verbruikBuitenBundel = hoeveelheidMb - VERBRUIK_ABONNEMENT;
             double kostenBuitenBundel = MEERPRIJS_MB * verbruikBuitenBundel;
-            kosten= BASIS_KOSTEN + kostenBuitenBundel;
+            kosten = BASIS_KOSTEN + kostenBuitenBundel;
         }
     }
 
     public void toonVerbruik() {
-        System.out.printf("%8s %8d %.2f %s\n", maand, hoeveelheidMb, kosten, (kosten > BASIS_KOSTEN)? "buiten je bundel!" : " ");
+        System.out.printf("%-14s%5d%7.2f %s\n", maand, hoeveelheidMb, kosten, (kosten > BASIS_KOSTEN) ? "buiten je bundel!" : "");
     }
-
-
 }
